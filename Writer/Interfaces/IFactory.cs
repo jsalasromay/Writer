@@ -7,6 +7,6 @@ namespace Writter_Kata.Interfaces
 {
     interface IFactory
     {
-        IWriter CreateWrite(FormatType formatType);
+        IWriter CreateWrite(FormatType _format);
     }
 }

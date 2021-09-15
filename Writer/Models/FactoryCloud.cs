@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Writer.Models;
 using Writter_Kata.Enum;
 using Writter_Kata.Interfaces;
 using Writter_Kata.Models;
@@ -9,7 +10,6 @@ namespace Writter_Kata
 {
     class FactoryCloud : IFactory
     {
-        IFormatable formater;
         private readonly Dictionary<FormatType, IFormatable> _formatList;
         public FactoryCloud(Dictionary<FormatType, IFormatable> formatList)
         {
@@ -18,12 +18,8 @@ namespace Writter_Kata
 
         public IWriter CreateWrite(FormatType formatType)
         {
-            return new Writer(formater);
+            return new WriterCloud(_formatList[formatType]);
         }
 
-        public Writer GetWritter(FormatType formater)
-        {
-            return new Writer(_formatList[formater]);
-        }
     }
 }

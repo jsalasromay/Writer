@@ -8,7 +8,7 @@ namespace Writter_Kata
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Quieres escribir en un archivo o en la nube: format/cloud");
+            Console.WriteLine("Quieres escribir en un archivo en local o en la nube: format/cloud");
             string storage = Console.ReadLine();
             Console.WriteLine("Introduzca el archivo que desea:");
             string name = Console.ReadLine();
@@ -24,6 +24,17 @@ namespace Writter_Kata
 
             var writter = container.Factory.CreateWrite((FormatType)choice);
             writter.Write(name, (FormatType)choice, storage);
+
+            Console.WriteLine("Quieres cambiar el formato de los archivos en local o en la nube: format/cloud");
+            string storage2 = Console.ReadLine();
+            Console.WriteLine(@"Introduzca el formato al que desea cambiarlos: 
+    1-json
+    2-txt
+    3-xml
+    4-yml");
+            int choice2;
+            Int32.TryParse(Console.ReadLine(), out choice2);
+            writter.Change((FormatType)choice2, storage2);
         }
     }
 }

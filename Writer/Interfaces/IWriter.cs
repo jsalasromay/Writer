@@ -8,5 +8,6 @@ namespace Writter_Kata.Interfaces
     interface IWriter
     {
         void Write(string fileName, FormatType formatType, String storageEnum);
+        void Change(FormatType formatType, string path);
     }
 }

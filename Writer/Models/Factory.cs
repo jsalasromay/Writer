@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WriterKata.Models;
 using Writter_Kata.Enum;
 using Writter_Kata.Interfaces;
-using Writter_Kata.Models;
 
 namespace Writter_Kata
 {
     class Factory : IFactory
     {
-        IFormatable formater;
         private readonly Dictionary<FormatType, IFormatable> _formatList;
         public Factory(Dictionary<FormatType, IFormatable> formatList)
         {
@@ -18,7 +17,7 @@ namespace Writter_Kata
 
         public IWriter CreateWrite(FormatType formatType)
         {
-            return new Writer(formater);
+            return new WriterFormat(_formatList[formatType]);
         }
 
     }
